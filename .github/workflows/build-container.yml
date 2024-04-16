@@ -33,12 +33,12 @@ jobs:
                 push: true
                 tags: your-docker-username/your-docker-repo:latest
 
-            - name: Sign in to GitHub Container Registry
-              uses: docker/login-action@v3
-              with:
-                username: ${{ github.actor }}
-                password: ${{ github.token }}
-                registry: ghcr.io
+#            - name: Sign in to GitHub Container Registry
+#              uses: docker/login-action@v3
+#              with:
+#                username: ${{ github.actor }}
+#                password: ${{ github.token }}
+#                registry: ghcr.io
         
             - name: Build and push Docker image
               id: container_build_and_push
@@ -47,4 +47,4 @@ jobs:
                 context: .
                 file: Dockerfile
                 tags: ${{ steps.meta.outputs.tags }}
-                push: true
+                push: false
